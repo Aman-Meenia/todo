@@ -9,6 +9,7 @@ function AddTodo() {
   const handleAddTodo = (e) => {
     e.preventDefault();
     addTodo({ name });
+    setName("");
   };
 
   return (
