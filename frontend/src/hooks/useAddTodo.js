@@ -3,6 +3,8 @@ import { TodoContext } from "../store/TodoList";
 import toast from "react-hot-toast";
 import axios from "axios";
 
+const PATH = import.meta.env.VITE_PATH;
+
 export const useAddTodo = () => {
   const [loading, setLoading] = useState();
   const { todoList, setTodoList } = useContext(TodoContext);
@@ -18,7 +20,8 @@ export const useAddTodo = () => {
     }
     setLoading(true);
     await axios
-      .post("/api/todo/add", { name })
+      .post(PATH + "api/todo/add", { name })
+
       .then((response) => {
         toast.success("Todo added successfully");
         setTodoList([...todoList, response.data.todo], {

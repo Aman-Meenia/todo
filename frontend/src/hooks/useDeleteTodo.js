@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { TodoContext } from "../store/TodoList";
-
+const PATH = import.meta.env.VITE_PATH;
 export const useDeleteTodo = () => {
   const [loading, setLoading] = useState();
   const { todoList, setTodoList } = useContext(TodoContext);
@@ -10,7 +10,7 @@ export const useDeleteTodo = () => {
   const deleteTodo = async ({ id }) => {
     setLoading(true);
     await axios
-      .delete(`/api/todo/delete/${id}`)
+      .delete(PATH + `/api/todo/delete/${id}`)
       .then((response) => {
         toast.success("Todo deleted successfully");
         setTodoList(

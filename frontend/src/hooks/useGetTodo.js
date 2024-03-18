@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useContext, useState } from "react";
 import { TodoContext } from "../store/TodoList";
-
+const PATH = import.meta.env.VITE_PATH;
 export const useGetTodo = () => {
   const [loading, setLoading] = useState(true);
   const { todoList, setTodoList } = useContext(TodoContext);
@@ -10,7 +10,7 @@ export const useGetTodo = () => {
   const getTodo = async () => {
     setLoading(true);
     await axios
-      .get("/api/todo/get")
+      .get(PATH + "/api/todo/get")
       .then((response) => {
         console.log(response.data.todos);
         setTodoList(response.data.todos);
