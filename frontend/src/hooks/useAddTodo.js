@@ -19,9 +19,9 @@ export const useAddTodo = () => {
       return toast.error("Name cannot be empty");
     }
     setLoading(true);
+    console.log(PATH);
     await axios
-      .post(PATH + "api/todo/add", { name })
-
+      .post(PATH + "/api/todo/add", { name })
       .then((response) => {
         toast.success("Todo added successfully");
         setTodoList([...todoList, response.data.todo], {

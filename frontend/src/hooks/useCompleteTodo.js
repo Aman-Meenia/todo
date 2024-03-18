@@ -10,7 +10,7 @@ export const useCompleteTodo = () => {
   const completeTodo = async ({ id }) => {
     setLoading(true);
     await axios
-      .patch(PATH + `api/todo/status/${id}`)
+      .patch(PATH + `/api/todo/status/${id}`)
       .then((response) => {
         const newTodo = todoList.map((todo) => {
           if (todo._id === id) {
